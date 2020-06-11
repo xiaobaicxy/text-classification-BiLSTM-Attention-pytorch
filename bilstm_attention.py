@@ -55,8 +55,8 @@ class BiLSTMModel(nn.Module):
         batch_size = x.size(1)
         
         #设置lstm最初的前项输出
-        h_0 = torch.randn(self.num_layers * self.num_directions, batch_size, self.hidden_size)
-        c_0 = torch.randn(self.num_layers * self.num_directions, batch_size, self.hidden_size)
+        h_0 = torch.randn(self.num_layers * self.num_directions, batch_size, self.hidden_size).to(device)
+        c_0 = torch.randn(self.num_layers * self.num_directions, batch_size, self.hidden_size).to(device)
         
         #out[seq_len, batch, num_directions * hidden_size]。多层lstm，out只保存最后一层每个时间步t的输出h_t
         #h_n, c_n [num_layers * num_directions, batch, hidden_size]
